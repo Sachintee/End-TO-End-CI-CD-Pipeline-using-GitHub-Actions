@@ -21,8 +21,8 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/ci-cd-app:latest .
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/End-TO-End-CI-CD-Pipeline-using-GitHub-Actions:latest .
 
     - name: Push Docker image
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/ci-cd-app:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/End-TO-End-CI-CD-Pipeline-using-GitHub-Actions:latest
