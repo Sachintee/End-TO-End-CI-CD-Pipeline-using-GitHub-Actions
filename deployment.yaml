@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: End-TO-End-CI-CD-Pipeline-using-GitHub-Actions
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: End-TO-End-CI-CD-Pipeline-using-GitHub-Actions
+  template:
+    metadata:
+      labels:
+        app: End-TO-End-CI-CD-Pipeline-using-GitHub-Actions
+    spec:
+      containers:
+      - name: app
+        image: DOCKER_USERNAME/End-TO-End-CI-CD-Pipeline-using-GitHub-Actions:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
