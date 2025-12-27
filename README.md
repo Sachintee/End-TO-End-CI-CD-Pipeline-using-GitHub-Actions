@@ -18,22 +18,34 @@ This project is part of a complete **CI + GitOps CD** DevOps workflow.
 
 ## 🧱 Architecture (CI)
 
-Developer Push:
+Developer Push
+
 ↓
+
 GitHub Repository
+
 ↓
+
 GitHub Actions (CI)
+
 ↓
+
 Docker Build
+
 ↓
+
 Docker Hub (Image Registry)
 
 ---
 
 ## 🛠 Tech Stack
+
 - GitHub Actions
+
 - Docker
+
 - Docker Hub
+
 - Python (sample backend)
 
 ---
@@ -42,11 +54,17 @@ Docker Hub (Image Registry)
 
 .
 ├── app.py
+
 ├── requirements.txt
+
 ├── Dockerfile
+
 ├── .github/
+
 │ └── workflows/
+
 │ └── ci.yaml
+
 └── README.md
 
 ---
