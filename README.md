@@ -18,7 +18,7 @@ This project is part of a complete **CI + GitOps CD** DevOps workflow.
 
 ## 🧱 Architecture (CI)
 
-Developer Push
+Developer Push:
 ↓
 GitHub Repository
 ↓
