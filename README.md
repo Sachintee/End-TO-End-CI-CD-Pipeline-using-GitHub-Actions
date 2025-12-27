@@ -52,19 +52,14 @@ Docker Hub (Image Registry)
 
 ## 📂 Repository Structure
 
-.
+---
+
 ├── app.py
-
 ├── requirements.txt
-
 ├── Dockerfile
-
 ├── .github/
-
 │ └── workflows/
-
 │ └── ci.yaml
-
 └── README.md
 
 ---
