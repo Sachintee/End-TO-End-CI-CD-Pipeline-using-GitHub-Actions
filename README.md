@@ -66,8 +66,7 @@ Docker Hub (Image Registry)
 
  └── ci.yaml
 
-|
-└── README.md
+├── README.md
 
 ---
 
