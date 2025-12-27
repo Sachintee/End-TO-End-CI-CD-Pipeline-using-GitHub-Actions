@@ -55,11 +55,16 @@ Docker Hub (Image Registry)
 ---
 
 ├── app.py
+|
 ├── requirements.txt
+|
 ├── Dockerfile
-├── .github/
-│ └── workflows/
+|
+├── .github/ 
+| └── workflows/
+| |
 │ └── ci.yaml
+|
 └── README.md
 
 ---
