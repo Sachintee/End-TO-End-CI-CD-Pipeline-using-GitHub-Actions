@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/End-to-End CI/CD Pipeline using GitHub Actions &amp; Docker.iml" filepath="$PROJECT_DIR$/.idea/End-to-End CI/CD Pipeline using GitHub Actions &amp; Docker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../PycharmProjects/Gitops-K8s-Deployment-P2/.idea/Gitops-K8s-Deployment-P2.iml" filepath="$PROJECT_DIR$/../PycharmProjects/Gitops-K8s-Deployment-P2/.idea/Gitops-K8s-Deployment-P2.iml" />
     </modules>
   </component>
 </project>
