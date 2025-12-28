@@ -48,6 +48,7 @@ jobs:
           token: ${{ secrets.GITOPS_TOKEN }}
           path: gitops
 
+
       - name: Update Image Tag in Deployment
         run: |
           sed -i "s|image: .*|image: $IMAGE_NAME:$IMAGE_TAG|" gitops/deployment.yaml
