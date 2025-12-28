@@ -32,13 +32,13 @@ jobs:
       # 🏗 Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t sachinteewal/devops-demo-backend:latest .
+          docker build -t sachinteenwal/devops-demo-backend:latest .
 
       # 🔍 Trivy Image Scan
       - name: Trivy Image Scan
         uses: aquasecurity/trivy-action@0.20.0
         with:
-          image-ref: sachinteewal/devops-demo-backend:latest
+          image-ref: sachinteenwal/devops-demo-backend:latest
           severity: CRITICAL,HIGH
           exit-code: 1
           ignore-unfixed: true
@@ -46,4 +46,4 @@ jobs:
       # 🚀 Push Docker image
       - name: Push Docker image
         run: |
-          docker push sachinteewal/devops-demo-backend:latest
+          docker push sachinteenwal/devops-demo-backend:latest
