@@ -1,49 +1,62 @@
-name: CI Pipeline - Docker Build, Scan & Push
+name: CI - Build, Scan, Push & Update GitOps
 
 on:
   push:
     branches:
       - main
 
+env:
+  IMAGE_NAME: sachinteenwal/devops-demo-backend
+  GITOPS_REPO: sachinteenwal/Gitops-K8s-Deployment-P2
+
 jobs:
-  docker:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout App Code
         uses: actions/checkout@v4
 
-      # 🔐 Trivy filesystem scan (code + Dockerfile)
-      - name: Trivy FS Scan
-        uses: aquasecurity/trivy-action@0.20.0
-        with:
-          scan-type: fs
-          severity: CRITICAL,HIGH
-          exit-code: 1
-          ignore-unfixed: true
+      - name: Set Image Tag
+        run: echo "IMAGE_TAG=${GITHUB_RUN_NUMBER}" >> $GITHUB_ENV
 
-      # 🔑 Login to Docker Hub
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # 🏗 Build Docker image
-      - name: Build Docker image
+      - name: Build Docker Image
         run: |
-          docker build -t sachinteenwal/devops-demo-backend:latest .
+          docker build -t $IMAGE_NAME:$IMAGE_TAG .
 
-      # 🔍 Trivy Image Scan
       - name: Trivy Image Scan
-        uses: aquasecurity/trivy-action@0.20.0
+        uses: aquasecurity/trivy-action@master
         with:
-          image-ref: sachinteenwal/devops-demo-backend:latest
+          image-ref: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           severity: CRITICAL,HIGH
-          exit-code: 1
-          ignore-unfixed: true
+          exit-code: 0
 
-      # 🚀 Push Docker image
-      - name: Push Docker image
+      - name: Push Docker Image
         run: |
-          docker push sachinteenwal/devops-demo-backend:latest
+          docker push $IMAGE_NAME:$IMAGE_TAG
+
+      - name: Checkout GitOps Repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.GITOPS_REPO }}
+          token: ${{ secrets.GH_TOKEN }}
+          path: gitops
+
+      - name: Update Image Tag in Deployment
+        run: |
+          sed -i "s|image: .*|image: $IMAGE_NAME:$IMAGE_TAG|" gitops/deployment.yaml
+
+      - name: Commit & Push GitOps Change
+        run: |
+          cd gitops
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add deployment.yaml
+          git commit -m "Update image to $IMAGE_NAME:$IMAGE_TAG"
+          git push

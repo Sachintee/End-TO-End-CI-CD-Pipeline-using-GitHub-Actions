@@ -1,0 +1,9 @@
+[33m4830725[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Add DevSecOps
+[33m638bd1d[m update ci
+[33m7c098af[m CI: build and push Docker image using GitHub Actions
+[33ma962501[m Add CD to Kubernetes using GitHub Actions
+[33m1fc3d1f[m Add CD to Kubernetes using GitHub Actions
+[33m3a0763a[m Add CD to Kubernetes using GitHub Actions
+[33m89f7f77[m Add CD: auto-deploy to Kubernetes
+[33m4bf0fea[m Add CI pipeline using GitHub Actions
+[33m3ccd9da[m End-to-end CI/CD pipeline using GitHub Actions
